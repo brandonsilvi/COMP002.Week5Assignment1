@@ -17,5 +17,18 @@ function primitiveMultiply(a, b) {
 }
 
 function reliableMultiply(a, b) {
-  // Your code here.
+// Your code here.
+
+// We are running the function until it hits the 20% chance to 
+// successfully multiply the two numbers without throwing an error.
+  while (true) { //the infinite looping
+    try {
+      return primitiveMultiply(a, b); //the attempt @ the 20% success
+    } catch (e) {
+      if (!(e instanceof MultiplicatorUnitFailure)) {
+        throw e;//runs the loop if we get our "Klunk" error
+      }
+    }
+  }
 }
+console.log(reliableMultiply(8, 8));
